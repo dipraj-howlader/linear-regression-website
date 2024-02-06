@@ -50,6 +50,7 @@ function toggleBestFitLine() {
 }
 
 // Function to calculate best-fit line equation (Simple Linear Regression)
+// Function to calculate best-fit line equation (Simple Linear Regression)
 function calculateBestFitLine() {
     const X = data.map(point => point.x);
     const Y = data.map(point => point.y);
@@ -83,17 +84,17 @@ function calculateBestFitLine() {
     // Display equation in the Results section
     document.getElementById('results').innerHTML = `<p>Best Fit Line Equation: ${equation}</p>`;
 
-    // Generate data points for best-fit line (assuming X-axis range from 0 to 100)
-    const bestFitLineData = [];
-    for (let x = 0; x <= 100; x++) {
-        const y = a0 + a1 * x;
-        bestFitLineData.push({ x, y });
-    }
+    // Generate data points for best-fit line spanning the entire graph area (0 to 100 for both X and Y)
+    const minX = 0;
+    const maxX = 100;
+    const minY = a0 + a1 * minX;
+    const maxY = a0 + a1 * maxX;
 
     // Add best-fit line to the chart
     window.chart.data.datasets.push({
         label: 'Best Fit Line',
-        data: bestFitLineData,
+        data: [{ x: minX, y: minY }, { x: maxX, y: maxY }],
+        type: 'line', // Set type to 'line' to ensure it's displayed as a line
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 2,
@@ -104,6 +105,11 @@ function calculateBestFitLine() {
     // Update the chart
     window.chart.update();
 }
+
+
+
+
+
 
 // Function to remove best-fit line
 function removeBestFitLine() {
