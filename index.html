@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h2>Data Input</h2>
+            <div>
+                <label for="x-input">X:</label>
+                <input type="text" id="x-input">
+            </div>
+            <div>
+                <label for="y-input">Y:</label>
+                <input type="text" id="y-input">
+            </div>
+            <button id="add-data-btn">Add Data</button>
+            <button id="reset-btn">Reset</button> <!-- Added reset button -->
+            <div>
+                <input type="checkbox" id="best-fit-checkbox">
+                <label for="best-fit-checkbox">Add Best-Fit Line</label>
+            </div>
+            <div>
+                <input type="checkbox" id="residuals-checkbox">
+                <label for="residuals-checkbox">Show Residuals</label>
+            </div>
+            <div>
+                <input type="checkbox" id="squared-residuals-checkbox">
+                <label for="squared-residuals-checkbox">Show Squared Residuals</label>
+            </div>
+        </div>
+        <div class="graph-section">
+            <h2>Graph</h2>
+            <canvas id="graph" width="4000" height="4000"></canvas>
+        </div>
+        <div class="result-section">
+            <h2>Results</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
