@@ -107,6 +107,54 @@ function calculateBestFitLine() {
 }
 
 
+// Function to toggle residuals
+function toggleResiduals() {
+    const residualsCheckbox = document.getElementById('residuals-checkbox');
+
+    if (residualsCheckbox.checked) {
+        // If checkbox is checked, calculate and display residuals
+        calculateResiduals();
+    } else {
+        // If checkbox is unchecked, remove residuals from the chart
+        removeResiduals();
+    }
+}
+
+
+// Function to calculate residuals
+function calculateResiduals() {
+    const residualsDataset = {
+        label: 'Residuals',
+        data: [],
+        type: 'line',
+        borderColor: 'rgba(255, 0, 0, 0.7)', // Red color for residuals
+        borderWidth: 1,
+        fill: false
+    };
+    
+    for (const point of data) {
+        
+        residualsDataset.data.push(point);
+        // Add the corresponding point on the X-axis (residual line point)
+
+        residualsDataset.data.push({ x: point.x, y: 0 });
+
+
+    }
+
+    // Add residuals to the chart
+    window.chart.data.datasets.push(residualsDataset);
+    window.chart.update();
+}
+
+
+
+// Function to remove residuals
+function removeResiduals() {
+    const datasets = window.chart.data.datasets;
+    window.chart.data.datasets = datasets.filter(dataset => dataset.label !== 'Residuals');
+    window.chart.update();
+}
 
 
 
@@ -159,3 +207,5 @@ function updateGraph() {
         }
     });
 }
+
+

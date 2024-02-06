@@ -18,20 +18,20 @@
                 <label for="y-input">Y:</label>
                 <input type="text" id="y-input">
             </div>
+            <br>
             <button id="add-data-btn">Add Data</button>
             <button id="reset-btn">Reset</button> <!-- Added reset button -->
+            <br>
+            
             <div>
                 <input type="checkbox" id="best-fit-checkbox">
                 <label for="best-fit-checkbox">Add Best-Fit Line</label>
             </div>
             <div>
-                <input type="checkbox" id="residuals-checkbox">
+                <input type="checkbox" id="residuals-checkbox" onchange="toggleResiduals()">
                 <label for="residuals-checkbox">Show Residuals</label>
             </div>
-            <div>
-                <input type="checkbox" id="squared-residuals-checkbox">
-                <label for="squared-residuals-checkbox">Show Squared Residuals</label>
-            </div>
+
         </div>
         <div class="graph-section">
             <h2>Graph</h2>
