@@ -77,7 +77,7 @@ function calculateBestFitLine() {
         document.getElementById('results').innerHTML = '<p>Unable to calculate the best-fit line equation.</p>';
         return;
     }
-
+    window.linearRegressionCoefficients = { a0, a1 };
     // Create the linear regression equation
     const equation = `y = ${a0.toFixed(3)} ${a1 < 0 ? '-' : '+'} ${Math.abs(a1).toFixed(3)}x`;
 
@@ -147,6 +147,41 @@ function calculateResiduals() {
     window.chart.update();
 }
 
+// ... (existing code)
+
+// Function to calculate Y value using the linear regression equation
+function calculateYValue(xValue) {
+    const coefficients = window.linearRegressionCoefficients;
+
+    // Check if coefficients are available
+    if (!coefficients) {
+        alert('Please calculate the best-fit line first.');
+        return;
+    }
+
+    // Use the linear regression equation to calculate Y value
+    const { a0, a1 } = coefficients;
+    const YValue = a0 + a1 * xValue;
+
+    // Add the predicted Y value to the Results section
+    document.getElementById('results').innerHTML += `<p>Predicted Stock Price for Given Date (${xValue}): ${YValue.toFixed(3)}</p>`;
+
+    return YValue;
+}
+
+// Function to predict Y value for a given date
+function predict() {
+    const dateInput = parseFloat(document.getElementById('date-input').value);
+
+    if (isNaN(dateInput)) {
+        alert('Please enter a valid numeric value for the given date.');
+        return;
+    }
+
+    calculateYValue(dateInput);
+}
+
+// ... (existing code)
 
 
 // Function to remove residuals
