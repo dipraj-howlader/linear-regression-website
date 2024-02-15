@@ -63,6 +63,10 @@ body {
     background-color: rgb(199, 42, 18);
 }
 
+.input-section #predict-btn{
+    background-color: rgb(25, 0, 126);
+}
+
 .input-section button:hover {
     background-color: #45a049;
 }
